@@ -2,12 +2,12 @@ import { Logo } from "./nav-components/Logo";
 import { SearchInput } from "./nav-components/SearchInput";
 import { NumResults } from "./nav-components/NumResults";
 
-export function NavBar() {
+export function NavBar({ movies }) {
   return (
     <nav className="nav-bar">
       <Logo />
       <SearchInput />
-      <NumResults />
+      <NumResults movies={movies} />
     </nav>
   );
 }

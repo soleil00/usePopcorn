@@ -2,6 +2,8 @@ import { NavBar } from "./nav/NavBar";
 import { ListBox } from "./main/ListBox";
 import { WatchedBox } from "./main/WatchedBox";
 
+import { useState } from "react";
+
 export const tempMovieData = [
   {
     imdbID: "tt1375666",
@@ -49,12 +51,13 @@ export const tempWatchedData = [
   },
 ];
 export default function App() {
+  const [movies, setMovies] = useState(tempMovieData);
   return (
     <>
-      <NavBar />
+      <NavBar movies={movies} />
 
       <main className="main">
-        <ListBox />
+        <ListBox movies={movies} />
         <WatchedBox />
       </main>
     </>
@@ -63,3 +66,8 @@ export default function App() {
 
 export const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
+
+//line 54. i just moved state movies from ListBox component and
+// instead pass it as props since there is some few component
+// that still want to access it like in nav to list nuber of movies
+// available hence we used prop drilling to other component
